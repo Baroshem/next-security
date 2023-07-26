@@ -1,5 +1,11 @@
 # next-security
 
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
+[![License][license-src]][license-href]
+[![Nuxt][nuxt-src]][nuxt-href]
+
 Security plugin for Next.js based on OWASP and Helmet.
 
 ## Features
@@ -75,3 +81,12 @@ const nextConfig = {
 
 module.exports = nextConfig;
 ```
+
+[npm-version-src]: https://img.shields.io/npm/v/next-security/latest.svg
+[npm-version-href]: https://npmjs.com/package/next-security
+[npm-downloads-src]: https://img.shields.io/npm/dt/next-security.svg
+[npm-downloads-href]: https://npmjs.com/package/next-security
+[github-actions-ci-src]: https://github.com/baroshem/next-security/actions/workflows/ci.yml/badge.svg
+[github-actions-ci-href]: https://github.com/baroshem/next-security/actions?query=workflow%3Aci
+[license-src]: https://img.shields.io/npm/l/next-security.svg
+[license-href]: https://npmjs.com/package/next-security
