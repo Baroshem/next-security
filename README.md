@@ -12,10 +12,10 @@ Security plugin for Next.js based on OWASP and Helmet.
 - No configuration security headers similar to Helmet.js
 - Customization of all header values
 - `[Coming soon]` Content Security Policy (CSP) for SSG apps
-- `[Coming soon]`Request Size limiter 
+- `[Coming soon]`Request Size limiter
 - `[Coming soon]`Cross Site Scripting (XSS) Validation
 - `[Coming soon]`Cross-Origin Resource Sharing (CORS) support
-- `[Coming soon]``[Optional]` Allowed HTTP Methods, Basic Auth, CSRF, Rate Limiter
+- `[Coming soon]` `[Optional]` Allowed HTTP Methods, Basic Auth, CSRF, Rate Limiter
 
 ## Usage
 
@@ -39,11 +39,30 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
+Or, if you want to have more control over the source for the headers:
+
+```js
+/** @type {import('next').NextConfig} */
+const { generateSecurityHeaders } = require('next-security');
+const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: generateSecurityHeaders(),
+      },
+    ];
+  },
+};
+
+module.exports = nextConfig;
+```
+
 And that's it! The plugin will now register security response headers so that your application will be more secure.
 
 If you inspect the headers that are being returned by the Next application in the browser, you should see the following result:
 
-```
+```md
 cross-origin-resource-policy: same-origin
 cross-origin-opener-policy: same-origin
 cross-origin-embedder-policy: require-corp
@@ -64,17 +83,16 @@ permissions-policy: camera=(), display-capture=(), fullscreen=(), geolocation=()
 
 You can pass configuration to the plugin like following:
 
-```ts
 ```js
 /** @type {import('next').NextConfig} */
 const { nextSecurity } = require('next-security');
 const nextConfig = {
   ...nextSecurity({
-        headers: {
-          xXSSProtection: '1',
-          crossOriginResourcePolicy: 'cross-origin',
-          contentSecurityPolicy: false,
-        },
+    headers: {
+      xXSSProtection: '1',
+      crossOriginResourcePolicy: 'cross-origin',
+      contentSecurityPolicy: false,
+    },
   }),
 };
 

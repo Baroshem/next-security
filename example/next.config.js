@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
-const { nextSecurity } = require('../build/main/index');
+const { generateSecurityHeaders } = require('../build/main/index');
+
 const nextConfig = {
-  ...nextSecurity(),
+  // ...nextSecurity(),
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: generateSecurityHeaders(),
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -100,18 +100,9 @@ export const nextSecurity = (config: SecurityConfig = defaultConfig) => {
   };
 };
 
-export const withSecurity = (
-  nextConfig: any,
-  config: SecurityConfig = defaultConfig
+export const generateSecurityHeaders = (
+  headers: SecurityHeaders = defaultConfig.headers
 ) => {
-  // TODO: fix returning the whole nextConfig instead
-  return {
-    ...nextSecurity(config),
-    ...nextConfig.headers(),
-  };
-};
-
-const generateSecurityHeaders = (headers: SecurityHeaders) => {
   const headersArray: SecurityHeader[] = [];
   for (const header in headers) {
     const headerOptions = headers[header];
