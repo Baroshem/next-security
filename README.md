@@ -27,13 +27,13 @@ yarn add next-security
 pnpm add next-security
 ```
 
-Add the plugin to the `next.config.js` like following:
+Add the plugin to the `next.config.js` like following :
 
 ```js
 /** @type {import('next').NextConfig} */
 const { nextSecurity } = require('next-security');
 const nextConfig = {
-  ...nextSecurity(),
+  ...nextSecurity(), // with this approach you will also hide the `X-Powered-By` header that is a good pattern
 };
 
 module.exports = nextConfig;
@@ -53,6 +53,7 @@ const nextConfig = {
       },
     ];
   },
+  // poweredByHeader: false // you can add this manually
 };
 
 module.exports = nextConfig;

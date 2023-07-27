@@ -17,6 +17,7 @@ export type SecurityHeaders = {
   xPermittedCrossDomainPolicies?: XPermittedCrossDomainPoliciesValue | false;
   xXSSProtection?: string | false;
   permissionsPolicy?: PermissionsPolicyValue | string | false;
+  xPoweredBy?: string | false;
 };
 
 export type StrictTransportSecurityValue = {

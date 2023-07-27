@@ -35,5 +35,6 @@ export const defaultConfig: SecurityConfig = {
       geolocation: ['()'],
       microphone: ['()'],
     },
+    xPoweredBy: false,
   },
 };

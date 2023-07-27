@@ -13,10 +13,11 @@ export const nextSecurity = (config: SecurityConfig) => {
       return [
         {
           source: '/(.*)',
-          headers: generateSecurityHeaders(config.headers),
+          headers: generateSecurityHeaders(config?.headers),
         },
       ];
     },
+    poweredByHeader: defaultConfig.headers.xPoweredBy,
   };
 };
 
