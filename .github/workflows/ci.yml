@@ -36,7 +36,7 @@ jobs:
         run: yarn
 
       - name: Lint
-        run: yarn lint
+        run: yarn test:lint
 
       - name: Prepare
         run: yarn build
