@@ -105,5 +105,9 @@
     "exclude": [
       "**/*.spec.js"
     ]
+  },
+  "stackblitz": {
+    "installDependencies": false,
+    "startCommand": "yarn stackblitz"
   }
 }
