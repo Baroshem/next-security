@@ -1,30 +1,29 @@
-import { defaultConfig } from './defaultConfig';
+import { defaultHeaders } from './headers';
 import {
   SECURITY_HEADER_NAMES,
-  SecurityConfig,
   SecurityHeader,
   SecurityHeaders,
 } from './types';
 import { defuReplaceArray, getHeaderValueFromOptions } from './utils';
 
-export const nextSecurity = (config: SecurityConfig) => {
+export const headers = (securityHeaders: SecurityHeaders) => {
   return {
     async headers() {
       return [
         {
           source: '/(.*)',
-          headers: generateSecurityHeaders(config?.headers),
+          headers: createHeaders(securityHeaders),
         },
       ];
     },
-    poweredByHeader: defaultConfig.headers.xPoweredBy,
+    poweredByHeader: defaultHeaders.xPoweredBy,
   };
 };
 
-export const generateSecurityHeaders = (headers: SecurityHeaders) => {
+export const createHeaders = (headers: SecurityHeaders) => {
   const localHeaders: SecurityHeaders = !headers
-    ? defaultConfig.headers
-    : defuReplaceArray({ ...headers }, { ...defaultConfig.headers });
+    ? defaultHeaders
+    : defuReplaceArray({ ...headers }, { ...defaultHeaders });
 
   const headersArray: SecurityHeader[] = [];
   for (const header in localHeaders) {

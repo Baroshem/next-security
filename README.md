@@ -5,16 +5,18 @@
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![License][license-src]][license-href]
 
-Security plugin for Next.js based on OWASP and Helmet.
+> Security plugin for Next.js based on [OWASP Top 10](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#nodejs-security-cheat-sheet) and [helmet](https://helmetjs.github.io/) that adds security response headers.
+
+- [👾 &nbsp;Playground](https://stackblitz.com/github/baroshem/next-security?file=.stackblitz%2Fnext.config.js)
 
 ## Features
 
 - No configuration security headers similar to Helmet.js
 - Customization of all header values
 - `[Coming soon]` Content Security Policy (CSP) for SSG apps
-- `[Coming soon]`Request Size limiter
-- `[Coming soon]`Cross Site Scripting (XSS) Validation
-- `[Coming soon]`Cross-Origin Resource Sharing (CORS) support
+- `[Coming soon]` Request Size limiter
+- `[Coming soon]` Cross Site Scripting (XSS) Validation
+- `[Coming soon]` Cross-Origin Resource Sharing (CORS) support
 - `[Coming soon]` `[Optional]` Allowed HTTP Methods, Basic Auth, CSRF, Rate Limiter
 
 ## Usage
@@ -31,9 +33,9 @@ Add the plugin to the `next.config.js` like following :
 
 ```js
 /** @type {import('next').NextConfig} */
-const { nextSecurity } = require('next-security');
+const { headers } = require('next-security');
 const nextConfig = {
-  ...nextSecurity(), // with this approach you will also hide the `X-Powered-By` header that is a good pattern
+  ...headers(), // with this approach you will also hide the `X-Powered-By` header that is a good pattern
 };
 
 module.exports = nextConfig;
@@ -43,13 +45,13 @@ Or, if you want to have more control over the source for the headers:
 
 ```js
 /** @type {import('next').NextConfig} */
-const { generateSecurityHeaders } = require('next-security');
+const { createHeaders } = require('next-security');
 const nextConfig = {
   async headers() {
     return [
       {
         source: '/(.*)',
-        headers: generateSecurityHeaders(),
+        headers: createHeaders(),
       },
     ];
   },
@@ -86,14 +88,12 @@ You can pass configuration to the plugin like following:
 
 ```js
 /** @type {import('next').NextConfig} */
-const { nextSecurity } = require('next-security');
+const { headers } = require('next-security');
 const nextConfig = {
-  ...nextSecurity({
-    headers: {
-      xXSSProtection: '1',
-      crossOriginResourcePolicy: 'cross-origin',
-      contentSecurityPolicy: false,
-    },
+  ...headers({
+    xXSSProtection: '1',
+    crossOriginResourcePolicy: 'cross-origin',
+    contentSecurityPolicy: false,
   }),
 };
 

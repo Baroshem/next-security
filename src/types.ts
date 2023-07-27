@@ -1,7 +1,3 @@
-export type SecurityConfig = {
-  headers: SecurityHeaders;
-};
-
 export type SecurityHeaders = {
   crossOriginResourcePolicy?: CrossOriginResourcePolicyValue | false;
   crossOriginOpenerPolicy?: CrossOriginOpenerPolicyValue | false;
