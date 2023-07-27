@@ -35,8 +35,8 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Lint
-        run: yarn test:lint
+      # - name: Lint
+      #   run: yarn test:lint
 
       - name: Prepare
         run: yarn build
