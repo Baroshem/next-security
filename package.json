@@ -1,6 +1,6 @@
 {
   "name": "next-security",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Security plugin for Next.js based on OWASP and Helmet",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -43,7 +43,8 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@bitauth/libauth": "^1.17.1"
+    "@bitauth/libauth": "^1.17.1",
+    "defu": "^6.1.2"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",

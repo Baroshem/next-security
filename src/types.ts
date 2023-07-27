@@ -1,7 +1,5 @@
-type ObjectHeaderValue = Record<string, string[] | boolean | number>;
-
 export type SecurityConfig = {
-  headers: Record<string, string | ObjectHeaderValue>;
+  headers: SecurityHeaders;
 };
 
 export type SecurityHeaders = {
