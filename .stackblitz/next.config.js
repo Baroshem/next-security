@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const { createHeaders, headers } = require('../build/main/index');
+const { createHeaders, headers } = require('next-security');
 
 const nextConfig = {
   ...headers({
